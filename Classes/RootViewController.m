@@ -7,18 +7,16 @@
 //
 
 #import "RootViewController.h"
-
+#import "ClassViewController.h"
+#import "Database.h"
 
 @implementation RootViewController
 
-/*
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+- (void)viewDidLoad
+{
+   [super viewDidLoad];
+   database = [[Database alloc] init];
 }
-*/
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -71,7 +69,8 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    // return 0;
+   return [database classCount];
 }
 
 
@@ -82,27 +81,25 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-	// Configure the cell.
+   
+   NSDictionary *class = [[database classes] objectAtIndex:indexPath.row];
+   cell.textLabel.text = [class objectForKey:@"name"];
+   cell.detailTextLabel.text = [[class objectForKey:@"body"] substringToIndex:80];
 
-    return cell;
+   return cell;
 }
 
-
-
-/*
 // Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    // Navigation logic may go here -- for example, create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController animated:YES];
-	// [anotherViewController release];
+ 	ClassViewController *anotherViewController = [[ClassViewController alloc] initWithStyle:UITableViewStyleGrouped];
+   NSDictionary *class = [[database classes] objectAtIndex:indexPath.row];
+   anotherViewController.classInfo = class;
+	[self.navigationController pushViewController:anotherViewController animated:YES];
+	[anotherViewController release];
 }
-*/
-
 
 /*
 // Override to support conditional editing of the table view.
@@ -144,8 +141,10 @@
 */
 
 
-- (void)dealloc {
-    [super dealloc];
+- (void)dealloc
+{
+   [database release];
+   [super dealloc];
 }
 
 

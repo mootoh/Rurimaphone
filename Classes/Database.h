@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#include <sqlite3.h>
 
 @interface Database : NSObject
 {
+   sqlite3  *handle_;
 }
 
-- (void) readClasses;
-- (void) readMethods;
-
+- (NSInteger) classCount;
+- (NSArray *) classes;
 @end

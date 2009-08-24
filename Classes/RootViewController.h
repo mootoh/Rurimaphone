@@ -6,7 +6,11 @@
 //  Copyright deadbeaf.org 2009. All rights reserved.
 //
 
-@interface RootViewController : UITableViewController {
+@class Database;
+
+@interface RootViewController : UITableViewController
+{
+   Database *database;
 }
 
 @end
