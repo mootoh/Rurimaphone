@@ -24,7 +24,7 @@
     // Override point for customization after app launch    
 	
 	[window addSubview:[navigationController view]];
-    [window makeKeyAndVisible];
+   [window makeKeyAndVisible];
 }
 
 
@@ -42,6 +42,4 @@
 	[super dealloc];
 }
 
-
 @end
-

@@ -165,15 +165,11 @@
    return 44.0f;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-   UILabel *headerLabel = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
-   if (section == 0) {
-      headerLabel.text = @"Abstract";
-   } else {
-      headerLabel.text = @"methods";
-   }
-   return headerLabel;
+   if (section == 0)
+      return @"Abstract";
+   return @"methods";
 }
 
 - (void)dealloc {
