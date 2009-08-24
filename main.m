@@ -2,7 +2,7 @@
 //  main.m
 //  Rurimaphone
 //
-//  Created by Motohiro Takayama on 8/24/09.
+//  Created by mootoh on 8/24/09.
 //  Copyright deadbeaf.org 2009. All rights reserved.
 //
 
