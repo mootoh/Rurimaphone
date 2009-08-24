@@ -7,11 +7,12 @@
 //
 
 #import "ClassViewController.h"
-
+#import "MethodViewController.h"
 
 @implementation ClassViewController
 
 @synthesize classInfo;
+@synthesize database;
 
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -84,7 +85,7 @@
    if (section == 0) {
       return 1;
    } else {
-      return 1; // methodCount:[classInfo objectForKey:@"name"]
+      return [database methodCount:[classInfo objectForKey:@"name"]];
    }
 }
 
@@ -104,17 +105,19 @@
       cell.textLabel.numberOfLines = 16;
       cell.textLabel.text = [classInfo objectForKey:@"body"];
    } else {
-      cell.textLabel.text = @"hoge";
+      NSArray *methods = [database methods:[classInfo objectForKey:@"name"]];
+      cell.textLabel.text = [[methods objectAtIndex:indexPath.row] objectForKey:@"names"];
    }
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
+	MethodViewController *anotherViewController = [[MethodViewController alloc] initWithStyle:UITableViewStyleGrouped];
+   NSArray *methods = [database methods:[classInfo objectForKey:@"name"]];
+   anotherViewController.method = [methods objectAtIndex:indexPath.row];
+	[self.navigationController pushViewController:anotherViewController animated:YES];
+	[anotherViewController release];
 }
 
 
@@ -172,8 +175,10 @@
    return @"methods";
 }
 
-- (void)dealloc {
-    [super dealloc];
+- (void)dealloc
+{
+   [database release];
+   [super dealloc];
 }
 
 

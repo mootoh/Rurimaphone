@@ -1,21 +1,32 @@
 //
-//  RootViewController.m
+//  MethodViewController.m
 //  Rurimaphone
 //
-//  Created by mootoh on 8/24/09.
-//  Copyright deadbeaf.org 2009. All rights reserved.
+//  Created by Motohiro Takayama on 8/24/09.
+//  Copyright 2009 deadbeaf.org. All rights reserved.
 //
 
-#import "RootViewController.h"
-#import "ClassViewController.h"
-#import "Database.h"
+#import "MethodViewController.h"
 
-@implementation RootViewController
 
-- (void)viewDidLoad
-{
-   [super viewDidLoad];
-   database = [[Database alloc] init];
+@implementation MethodViewController
+@synthesize method;
+
+/*
+- (id)initWithStyle:(UITableViewStyle)style {
+    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
+    if (self = [super initWithStyle:style]) {
+    }
+    return self;
+}
+*/
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+   self.title = [method objectForKey:@"names"];
+
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 /*
@@ -40,12 +51,12 @@
 */
 
 /*
- // Override to allow orientations other than the default portrait orientation.
+// Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations.
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
- */
+*/
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -55,7 +66,7 @@
 }
 
 - (void)viewDidUnload {
-	// Release anything that can be recreated in viewDidLoad or on demand.
+	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
 
@@ -69,8 +80,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // return 0;
-   return [database classCount];
+    return 1;
 }
 
 
@@ -81,26 +91,23 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-   
-   NSDictionary *class = [[database classes] objectAtIndex:indexPath.row];
-   cell.textLabel.text = [class objectForKey:@"name"];
-   cell.detailTextLabel.text = [[class objectForKey:@"body"] substringToIndex:80];
-
-   return cell;
+    
+    // Set up the cell...
+   cell.textLabel.text = [method objectForKey:@"body"];
+	
+    return cell;
 }
 
-// Override to support row selection in the table view.
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
- 	ClassViewController *anotherViewController = [[ClassViewController alloc] initWithStyle:UITableViewStyleGrouped];
-   NSDictionary *class = [[database classes] objectAtIndex:indexPath.row];
-   anotherViewController.classInfo = class;
-   anotherViewController.database = database;
-	[self.navigationController pushViewController:anotherViewController animated:YES];
-	[anotherViewController release];
+    // Navigation logic may go here. Create and push another view controller.
+	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
+	// [self.navigationController pushViewController:anotherViewController];
+	// [anotherViewController release];
 }
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -116,11 +123,11 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
 */
@@ -142,10 +149,8 @@
 */
 
 
-- (void)dealloc
-{
-   [database release];
-   [super dealloc];
+- (void)dealloc {
+    [super dealloc];
 }
 
 

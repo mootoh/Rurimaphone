@@ -16,4 +16,8 @@
 
 - (NSInteger) classCount;
 - (NSArray *) classes;
+
+- (NSInteger) methodCount:(NSString *)forClass;
+- (NSArray *) methods:(NSString *)forClass;
+
 @end

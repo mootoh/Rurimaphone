@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class Database;
 
 @interface ClassViewController : UITableViewController
 {
    NSDictionary *classInfo;
+   Database *database;
 }
 
 @property (nonatomic, retain) NSDictionary *classInfo;
+@property (nonatomic, retain) Database *database;
 @end

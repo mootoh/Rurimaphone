@@ -10,8 +10,6 @@
 #import <sqlite3.h>
 
 @interface Database (Private)
-- (void) readClasses;
-- (void) readMethods;
 - (NSString *) databasePath;
 @end
 
@@ -103,34 +101,57 @@
    return ret;
 }
 
+- (NSInteger) methodCount:(NSString *)forClass
+{
+   sqlite3_stmt *stmt = nil;
+   NSString *sql = [NSString stringWithFormat:@"SELECT count() from method where class='%@'", forClass];
+   
+   if (sqlite3_prepare_v2(handle_, [sql UTF8String], -1, &stmt, NULL) != SQLITE_OK)
+      [[NSException
+        exceptionWithName:@"DatabaseException"
+        reason:[NSString stringWithFormat:@"Failed to prepare statement: msg='%s, LINE=%d'", sqlite3_errmsg(handle_), __LINE__]
+        userInfo:nil] raise];
+   
+   if (sqlite3_step(stmt) != SQLITE_ROW) {
+      NSLog(@"something bad happen in select");
+      return -1;
+   }
+   
+   NSInteger ret = sqlite3_column_int(stmt, 0);
+   sqlite3_finalize(stmt);
+   return ret;
+}
+
+- (NSArray *) methods:(NSString *)forClass
+{
+   sqlite3_stmt *stmt = nil;
+   NSString *sql = [NSString stringWithFormat:@"SELECT names,body from method where class='%@'", forClass];
+   
+   if (sqlite3_prepare_v2(handle_, [sql UTF8String], -1, &stmt, NULL) != SQLITE_OK)
+      [[NSException
+        exceptionWithName:@"DatabaseException"
+        reason:[NSString stringWithFormat:@"Failed to prepare statement: msg='%s, LINE=%d'", sqlite3_errmsg(handle_), __LINE__]
+        userInfo:nil] raise];
+   
+   NSMutableArray *ret = [NSMutableArray array];
+   
+   while (sqlite3_step(stmt) == SQLITE_ROW) {
+      NSString *names = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 0)];
+      NSString *body = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 1)];
+      
+      NSArray *keys = [NSArray arrayWithObjects:@"names", @"body", nil];
+      NSArray *vals = [NSArray arrayWithObjects:names, body, nil];
+      NSDictionary *dict = [NSDictionary dictionaryWithObjects:vals forKeys:keys];
+      [ret addObject:dict];
+   }
+   
+   sqlite3_finalize(stmt);
+   return ret;
+}
+
 @end
 
 @implementation Database (Private)
-
-- (void) readClasses
-{
-   NSString *classPath = [self databasePath];
-   NSDirectoryEnumerator *direnum = [[NSFileManager defaultManager]
-                                     enumeratorAtPath:classPath];
-   NSString *pname;
-   while (pname = [direnum nextObject])
-   {
-      if ([[pname pathExtension] isEqualToString:@"rtfd"])
-      {
-         /* don’t enumerate this directory */
-         [direnum skipDescendents];
-      }
-      else
-      {
-         NSLog(@"file : %@", pname);
-         /* ...process file here... */
-      }
-   }
-}
-
-- (void) readMethods
-{
-}
 
 - (NSString *) databasePath
 {
