@@ -16,6 +16,17 @@
    Database *database;
    NSArray *methods;
    IBOutlet UITableView *table_view;
+   
+   NSMutableArray *searchResults;
+   NSMutableDictionary *entry;
+   NSString *strings;
+   
+   enum {
+      IN_OTHER,
+      IN_ID,
+      IN_CONTENT,
+      IN_STATES
+   } state;
 }
 
 @property (nonatomic, retain) NSDictionary *classInfo;

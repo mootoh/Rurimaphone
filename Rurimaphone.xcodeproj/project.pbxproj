@@ -16,6 +16,10 @@
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
 		922E0F241042CAF00066762C /* MethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 922E0F231042CAF00066762C /* MethodViewController.m */; };
+		92342C3B104312B80087A2CD /* CodeSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92342C3A104312B80087A2CD /* CodeSearchResultViewController.m */; };
+		92342C67104314BC0087A2CD /* CodeSearchResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92342C66104314BC0087A2CD /* CodeSearchResultView.xib */; };
+		92342C991043164D0087A2CD /* CodeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92342C971043164D0087A2CD /* CodeSearchViewController.m */; };
+		92342C9A1043164D0087A2CD /* CodeSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92342C981043164D0087A2CD /* CodeSearchViewController.xib */; };
 		92BB0F111042F204008627CB /* RurimaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 92BB0F101042F204008627CB /* RurimaIcon.png */; };
 		92BB0F6310430035008627CB /* ClassView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BB0F6210430035008627CB /* ClassView.xib */; };
 		92BB0F9B10430284008627CB /* MethodView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BB0F9A10430284008627CB /* MethodView.xib */; };
@@ -42,6 +46,12 @@
 		8D1107310486CEB800E47090 /* Rurimaphone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Rurimaphone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		922E0F221042CAF00066762C /* MethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodViewController.h; sourceTree = "<group>"; };
 		922E0F231042CAF00066762C /* MethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodViewController.m; sourceTree = "<group>"; };
+		92342C39104312B80087A2CD /* CodeSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeSearchResultViewController.h; sourceTree = "<group>"; };
+		92342C3A104312B80087A2CD /* CodeSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeSearchResultViewController.m; sourceTree = "<group>"; };
+		92342C66104314BC0087A2CD /* CodeSearchResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CodeSearchResultView.xib; sourceTree = "<group>"; };
+		92342C961043164D0087A2CD /* CodeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeSearchViewController.h; sourceTree = "<group>"; };
+		92342C971043164D0087A2CD /* CodeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeSearchViewController.m; sourceTree = "<group>"; };
+		92342C981043164D0087A2CD /* CodeSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CodeSearchViewController.xib; path = Classes/CodeSearchViewController.xib; sourceTree = "<group>"; };
 		92BB0F101042F204008627CB /* RurimaIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RurimaIcon.png; sourceTree = "<group>"; };
 		92BB0F6210430035008627CB /* ClassView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassView.xib; sourceTree = "<group>"; };
 		92BB0F9A10430284008627CB /* MethodView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MethodView.xib; sourceTree = "<group>"; };
@@ -82,6 +92,10 @@
 				B9BCA80A1042AE1900ABFC42 /* ClassViewController.m */,
 				922E0F221042CAF00066762C /* MethodViewController.h */,
 				922E0F231042CAF00066762C /* MethodViewController.m */,
+				92342C39104312B80087A2CD /* CodeSearchResultViewController.h */,
+				92342C3A104312B80087A2CD /* CodeSearchResultViewController.m */,
+				92342C961043164D0087A2CD /* CodeSearchViewController.h */,
+				92342C971043164D0087A2CD /* CodeSearchViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -126,6 +140,8 @@
 				8D1107310486CEB800E47090 /* Rurimaphone-Info.plist */,
 				92BB0F6210430035008627CB /* ClassView.xib */,
 				92BB0F9A10430284008627CB /* MethodView.xib */,
+				92342C66104314BC0087A2CD /* CodeSearchResultView.xib */,
+				92342C981043164D0087A2CD /* CodeSearchViewController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -197,6 +213,8 @@
 				92BB0F6310430035008627CB /* ClassView.xib in Resources */,
 				92BB0F9B10430284008627CB /* MethodView.xib in Resources */,
 				92BB0FEE10430574008627CB /* Settings.bundle in Resources */,
+				92342C67104314BC0087A2CD /* CodeSearchResultView.xib in Resources */,
+				92342C9A1043164D0087A2CD /* CodeSearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +231,8 @@
 				B9BCA58C10428E3900ABFC42 /* Database.m in Sources */,
 				B9BCA80B1042AE1900ABFC42 /* ClassViewController.m in Sources */,
 				922E0F241042CAF00066762C /* MethodViewController.m in Sources */,
+				92342C3B104312B80087A2CD /* CodeSearchResultViewController.m in Sources */,
+				92342C991043164D0087A2CD /* CodeSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import "ClassViewController.h"
 #import "MethodViewController.h"
+#import "CodeSearchResultViewController.h"
 #import "Database.h"
 
 @implementation ClassViewController
@@ -171,10 +172,106 @@
 
 - (IBAction) searchSnippets
 {
+   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.google.com/codesearch/feeds/search?q=lang:ruby+%@", [classInfo objectForKey:@"name"]]]; // TODO: should escape it
+   NSLog(@"search for url = %@", url);
+   NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+   parser.delegate = self;
+   [parser parse];
+   
+   CodeSearchResultViewController *csrvc = [[CodeSearchResultViewController alloc] initWithNibName:@"CodeSearchResultView" bundle:nil];
+   csrvc.result = searchResults;
+   UINavigationController *navc = [[UINavigationController alloc] initWithRootViewController:csrvc];
+
+   [self.navigationController presentModalViewController:navc animated:YES];
+   [navc release];
+   [csrvc release];
+   
 }
 
 - (IBAction) tweet
 {
+   NSString *content = [NSString stringWithFormat:@"status=%@", [classInfo objectForKey:@"name"]];
+   
+   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+   NSLog(@"twitter account:%@, password=%@", [defaults stringForKey:@"username_preference"], [defaults stringForKey:@"password_preference"]);
+   
+   NSString *urlString = [NSString stringWithFormat:@"http://%@:%@@twitter.com/statuses/update.json",
+      [defaults stringForKey:@"username_preference"],
+      [defaults stringForKey:@"password_preference"]];
+   
+   NSURL *url = [NSURL URLWithString:urlString];
+   NSMutableURLRequest *urlRequest = [[[NSMutableURLRequest alloc] initWithURL:url] autorelease];
+   [urlRequest setHTTPMethod:@"POST"];
+   [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+   
+   NSURLResponse *response;
+   NSError *err;
+   NSData *ret = [NSURLConnection sendSynchronousRequest:urlRequest
+                                       returningResponse:&response
+                                                   error:&err];
+   
+	NSString *result = [[[NSString alloc] initWithData:ret encoding:NSUTF8StringEncoding] autorelease];
+   NSLog(@"NSURLConnection result = %@", result);   
+}
+
+#pragma mark XMLParser
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
+{
+   if ([elementName isEqualToString:@"feed"]) {
+      searchResults = [[NSMutableArray alloc] init];
+      state = IN_OTHER;
+      return;
+   }
+   if ([elementName isEqualToString:@"entry"]) {
+      entry = [[NSMutableDictionary alloc] init];
+      strings = @"";
+      return;
+   }
+   if ([elementName isEqualToString:@"id"]) {
+      state = IN_ID;
+      return;
+   }
+   if ([elementName isEqualToString:@"content"]) {
+      state = IN_CONTENT;
+      return;
+   }
+   return;
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+   if ([elementName isEqualToString:@"entry"]) {
+      [searchResults addObject:entry];
+      [entry release];
+      state = IN_OTHER;
+   }
+   if ([elementName isEqualToString:@"id"]) {
+      [entry setObject:strings forKey:@"id"];
+      strings = @"";
+      state = IN_OTHER;
+      return;
+   }
+   if ([elementName isEqualToString:@"content"]) {
+      [entry setObject:strings forKey:@"content"];
+      strings = @"";
+      state = IN_OTHER;
+      return;
+   }
+   return;
+}
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+{
+   if (state == IN_ID) {
+      strings = [strings stringByAppendingString:string];
+      return;
+   }
+   if (state == IN_CONTENT) {
+      strings = [strings stringByAppendingString:string];
+      return;
+   }
+   return;
 }
 
 @end
