@@ -148,6 +148,18 @@
    [super dealloc];
 }
 
+#pragma mark UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+   NSArray *result = [database query:searchText];
+   NSLog(@"results = %d", result.count);
+   /*
+   self.addresses = result;
+   
+   table_view.hidden = (addresses.count == 0);
+   [self.table_view reloadData];
+   */
+}
 
 @end
-

@@ -8,9 +8,11 @@
 
 @class Database;
 
-@interface RootViewController : UITableViewController
+@interface RootViewController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
 {
    Database *database;
+   IBOutlet UITableView *table_view;
+   IBOutlet UISearchBar *search_bar;
 }
 
 @end

@@ -149,6 +149,11 @@
    return ret;
 }
 
+- (NSArray *) query:(NSString *)forString
+{
+   return [NSArray array];
+}
+
 @end
 
 @implementation Database (Private)
