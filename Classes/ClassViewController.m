@@ -34,6 +34,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+/*
 - (void)viewWillAppear:(BOOL)animated
 {
    [super viewWillAppear:animated];
@@ -43,8 +44,9 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
-   [self.navigationController setNavigationBarHidden:YES animated:NO];
+   //[self.navigationController setNavigationBarHidden:YES animated:NO];
 }
+*/
 
 /*
 - (void)viewDidAppear:(BOOL)animated {
@@ -122,7 +124,9 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+   if (indexPath.section == 0) return;
 	MethodViewController *anotherViewController = [[MethodViewController alloc] initWithNibName:nil bundle:nil];
+   anotherViewController.classInfo = classInfo;
    anotherViewController.method = [methods objectAtIndex:indexPath.row];
 	[self.navigationController pushViewController:anotherViewController animated:YES];
 	[anotherViewController release];

@@ -11,9 +11,11 @@
 
 @interface MethodViewController : UIViewController
 {
+   NSDictionary *classInfo;
    NSDictionary *method;
 }
 
+@property (nonatomic,retain) NSDictionary *classInfo;
 @property (nonatomic,retain) NSDictionary *method;
 
 @end

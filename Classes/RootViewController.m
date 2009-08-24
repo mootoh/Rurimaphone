@@ -20,21 +20,23 @@
    self.classes = [database classes];
 }
 
-/*
+
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+   [super viewWillAppear:animated];
+   [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
-*/
+
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
 */
-/*
+
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
+   [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
-*/
+
 /*
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
@@ -86,7 +88,10 @@
    
    NSDictionary *class = [classes objectAtIndex:indexPath.row];
    cell.textLabel.text = [class objectForKey:@"name"];
-   cell.detailTextLabel.text = [[class objectForKey:@"body"] substringToIndex:80];
+   NSString *body = [class objectForKey:@"body"];
+   if (body.length > 80)
+      body = [body substringToIndex:80];
+   cell.detailTextLabel.text = body;
 
    return cell;
 }

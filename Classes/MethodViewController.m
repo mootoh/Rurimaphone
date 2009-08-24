@@ -10,12 +10,11 @@
 
 
 @implementation MethodViewController
-@synthesize method;
-
+@synthesize method, classInfo;
 
 - (void)viewDidLoad {
    [super viewDidLoad];
-   self.title = [method objectForKey:@"names"];
+   self.title = [NSString stringWithFormat:@"%@#%@", [classInfo objectForKey:@"name"], [method objectForKey:@"names"]];
 
    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(16, 16, 320-16*2, 400)];
    textView.editable = NO;

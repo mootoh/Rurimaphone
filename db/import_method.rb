@@ -26,11 +26,14 @@ ARGV.each do |argv|
    attrs = parse_method_file(argv)
    p attrs
 
+   begin
       db.execute('insert into method values ( ?, ?, ?, ?, ? )',
          attrs['names'],
          attrs['class'],
          attrs['kind'],
          attrs['visibility'],
          attrs['body'])
+   rescue
+      retry
+   end
 end
-
