@@ -29,7 +29,7 @@
    [super viewDidLoad];
    self.title = [classInfo objectForKey:@"name"];
    self.methods = [database methods:[classInfo objectForKey:@"name"]];
-
+   
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -105,12 +105,21 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+   static NSString *CellIdentifierForAbstract = @"ClassViewCellAbstract";
+   static NSString *CellIdentifierForMethod = @"ClassViewCellMethod";
+
+   UITableViewCell *cell = nil;
+   if (indexPath.section == 0) {
+      cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifierForAbstract];
+      if (cell == nil) {
+         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifierForAbstract] autorelease];
+      }
+   } else {
+      cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifierForMethod];
+      if (cell == nil) {
+         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifierForMethod] autorelease];
+      }
+   }
     
    if (indexPath.section == 0) {
       cell.textLabel.font = [UIFont systemFontOfSize:12];
@@ -118,14 +127,19 @@
       cell.textLabel.text = [classInfo objectForKey:@"body"];
    } else {
       cell.textLabel.text = [[methods objectAtIndex:indexPath.row] objectForKey:@"names"];
+      NSString *body = [[methods objectAtIndex:indexPath.row] objectForKey:@"body"];
+      
+      if (body.length > 80) body = [body substringToIndex:80];
+      cell.detailTextLabel.text = body;
    }
-    return cell;
+
+   return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    if (indexPath.section == 0) return;
-	MethodViewController *anotherViewController = [[MethodViewController alloc] initWithNibName:nil bundle:nil];
+	MethodViewController *anotherViewController = [[MethodViewController alloc] initWithNibName:@"MethodView" bundle:nil];
    anotherViewController.classInfo = classInfo;
    anotherViewController.method = [methods objectAtIndex:indexPath.row];
 	[self.navigationController pushViewController:anotherViewController animated:YES];
@@ -153,6 +167,14 @@
    [methods release];
    [database release];
    [super dealloc];
+}
+
+- (IBAction) searchSnippets
+{
+}
+
+- (IBAction) tweet
+{
 }
 
 @end

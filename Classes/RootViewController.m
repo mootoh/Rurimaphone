@@ -100,7 +100,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    [search_bar resignFirstResponder];
 
- 	ClassViewController *anotherViewController = [[ClassViewController alloc] initWithStyle:UITableViewStyleGrouped];
+ 	//ClassViewController *anotherViewController = [[ClassViewController alloc] initWithStyle:UITableViewStyleGrouped];
+   ClassViewController *anotherViewController = [[ClassViewController alloc] initWithNibName:@"ClassView" bundle:nil];
    NSDictionary *class = [classes objectAtIndex:indexPath.row];
    anotherViewController.classInfo = class;
    anotherViewController.database = database;

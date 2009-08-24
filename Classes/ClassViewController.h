@@ -10,14 +10,19 @@
 
 @class Database;
 
-@interface ClassViewController : UITableViewController
+@interface ClassViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
    NSDictionary *classInfo;
    Database *database;
    NSArray *methods;
+   IBOutlet UITableView *table_view;
 }
 
 @property (nonatomic, retain) NSDictionary *classInfo;
 @property (nonatomic, retain) Database *database;
 @property (nonatomic, retain) NSArray *methods;
+
+- (IBAction) searchSnippets;
+- (IBAction) tweet;
+
 @end

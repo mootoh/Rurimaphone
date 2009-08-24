@@ -8,7 +8,7 @@ def parse_method_file(file)
    dir = File.dirname(fh).split(/\//).last
 
    ret = {}
-   ret['class'] = dir[1..dir.length]
+   ret['class'] = dir.gsub(/-(\w)/) { |w| w.upcase} .gsub(/-/, '').gsub(/=/, '::')
    3.times do |i|
       line = fh.readline.chomp
       line =~ /^([^=]+)=(.+)/

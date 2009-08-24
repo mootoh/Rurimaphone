@@ -7,7 +7,10 @@ def parse_class_file(file)
    fh = open(file)
 
    ret = {}
-   ret['name'] = file.sub(/.*\/-/, '')
+   path = file.split(/\//).last
+   ret['name'] = path.gsub(/-(\w)/) { |w| w.upcase} .gsub(/-/, '').gsub(/=/, '::')
+   puts ret['name']
+
    5.times do |i|
       t, v = fh.readline.chomp.split(/=/)
       v = v.join if v.class == Array
@@ -23,7 +26,7 @@ db = SQLite3::Database.new( "rurima.db" )
 
 ARGV.each do |argv|
    attrs = parse_class_file(argv)
-   p argv
+   #p argv
 
    begin
       db.execute('insert into class values ( ?, ?, ?, ?, ?, ?, ? )',

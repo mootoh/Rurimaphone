@@ -13,9 +13,13 @@
 {
    NSDictionary *classInfo;
    NSDictionary *method;
+   IBOutlet UITextView *textView;
 }
 
 @property (nonatomic,retain) NSDictionary *classInfo;
 @property (nonatomic,retain) NSDictionary *method;
+
+- (IBAction) searchSnippets;
+- (IBAction) tweet;
 
 @end

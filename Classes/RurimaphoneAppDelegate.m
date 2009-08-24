@@ -23,6 +23,9 @@
     
     // Override point for customization after app launch    
 	
+   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+   NSLog(@"twitter account:%@, password=%@", [defaults stringForKey:@"username_preference"], [defaults stringForKey:@"password_preference"]);
+
 	[window addSubview:[navigationController view]];
    [window makeKeyAndVisible];
 }
