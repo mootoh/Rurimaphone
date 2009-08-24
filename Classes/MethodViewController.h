@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface MethodViewController : UITableViewController
+@interface MethodViewController : UIViewController
 {
    NSDictionary *method;
 }

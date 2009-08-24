@@ -13,6 +13,9 @@
    Database *database;
    IBOutlet UITableView *table_view;
    IBOutlet UISearchBar *search_bar;
+   NSArray *classes;
 }
+
+@property (nonatomic, retain) NSArray *classes;
 
 @end

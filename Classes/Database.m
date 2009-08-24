@@ -151,12 +151,56 @@
 
 - (NSArray *) queryForClass:(NSString *)forString
 {
-   return [NSArray array];
+   sqlite3_stmt *stmt = nil;
+   NSString *sql = [NSString stringWithFormat:@"SELECT name,body FROM class WHERE name LIKE '%%%@%%' OR body LIKE '%%%@%%'", forString, forString];
+   
+   if (sqlite3_prepare_v2(handle_, [sql UTF8String], -1, &stmt, NULL) != SQLITE_OK)
+      [[NSException
+        exceptionWithName:@"DatabaseException"
+        reason:[NSString stringWithFormat:@"Failed to prepare statement: msg='%s, LINE=%d'", sqlite3_errmsg(handle_), __LINE__]
+        userInfo:nil] raise];
+   
+   NSMutableArray *ret = [NSMutableArray array];
+   
+   while (sqlite3_step(stmt) == SQLITE_ROW) {
+      NSString *name = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 0)];
+      NSString *body = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 1)];
+      
+      NSArray *keys = [NSArray arrayWithObjects:@"name", @"body", nil];
+      NSArray *vals = [NSArray arrayWithObjects:name, body, nil];
+      NSDictionary *dict = [NSDictionary dictionaryWithObjects:vals forKeys:keys];
+      [ret addObject:dict];
+   }
+   
+   sqlite3_finalize(stmt);
+   return ret;
 }
 
 - (NSArray *) queryForMethod:(NSString *)forString
 {
-   return [NSArray array];
+   sqlite3_stmt *stmt = nil;
+   NSString *sql = [NSString stringWithFormat:@"SELECT names,body FROM class WHERE names LIKE '%%%@%%' OR body LIKE '%%%@%%'", forString, forString];
+   
+   if (sqlite3_prepare_v2(handle_, [sql UTF8String], -1, &stmt, NULL) != SQLITE_OK)
+      [[NSException
+        exceptionWithName:@"DatabaseException"
+        reason:[NSString stringWithFormat:@"Failed to prepare statement: msg='%s, LINE=%d'", sqlite3_errmsg(handle_), __LINE__]
+        userInfo:nil] raise];
+   
+   NSMutableArray *ret = [NSMutableArray array];
+   
+   while (sqlite3_step(stmt) == SQLITE_ROW) {
+      NSString *names = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 0)];
+      NSString *body = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 1)];
+      
+      NSArray *keys = [NSArray arrayWithObjects:@"names", @"body", nil];
+      NSArray *vals = [NSArray arrayWithObjects:names, body, nil];
+      NSDictionary *dict = [NSDictionary dictionaryWithObjects:vals forKeys:keys];
+      [ret addObject:dict];
+   }
+   
+   sqlite3_finalize(stmt);
+   return ret;
 }
 
 @end

@@ -14,8 +14,10 @@
 {
    NSDictionary *classInfo;
    Database *database;
+   NSArray *methods;
 }
 
 @property (nonatomic, retain) NSDictionary *classInfo;
 @property (nonatomic, retain) Database *database;
+@property (nonatomic, retain) NSArray *methods;
 @end

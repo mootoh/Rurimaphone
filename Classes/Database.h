@@ -21,4 +21,6 @@
 - (NSArray *) methods:(NSString *)forClass;
 
 - (NSArray *) queryForClass:(NSString *)forString;
+- (NSArray *) queryForMethod:(NSString *)forString;
+
 @end

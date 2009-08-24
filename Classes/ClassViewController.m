@@ -8,11 +8,13 @@
 
 #import "ClassViewController.h"
 #import "MethodViewController.h"
+#import "Database.h"
 
 @implementation ClassViewController
 
 @synthesize classInfo;
 @synthesize database;
+@synthesize methods;
 
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -24,18 +26,26 @@
 */
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+   [super viewDidLoad];
    self.title = [classInfo objectForKey:@"name"];
+   self.methods = [database methods:[classInfo objectForKey:@"name"]];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewWillAppear:(BOOL)animated
+{
+   [super viewWillAppear:animated];
+   [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
-*/
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+   [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -85,7 +95,7 @@
    if (section == 0) {
       return 1;
    } else {
-      return [database methodCount:[classInfo objectForKey:@"name"]];
+      return methods.count;
    }
 }
 
@@ -105,7 +115,6 @@
       cell.textLabel.numberOfLines = 16;
       cell.textLabel.text = [classInfo objectForKey:@"body"];
    } else {
-      NSArray *methods = [database methods:[classInfo objectForKey:@"name"]];
       cell.textLabel.text = [[methods objectAtIndex:indexPath.row] objectForKey:@"names"];
    }
     return cell;
@@ -113,52 +122,12 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	MethodViewController *anotherViewController = [[MethodViewController alloc] initWithStyle:UITableViewStyleGrouped];
-   NSArray *methods = [database methods:[classInfo objectForKey:@"name"]];
+	MethodViewController *anotherViewController = [[MethodViewController alloc] initWithNibName:nil bundle:nil];
    anotherViewController.method = [methods objectAtIndex:indexPath.row];
 	[self.navigationController pushViewController:anotherViewController animated:YES];
 	[anotherViewController release];
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -177,10 +146,9 @@
 
 - (void)dealloc
 {
+   [methods release];
    [database release];
    [super dealloc];
 }
 
-
 @end
-

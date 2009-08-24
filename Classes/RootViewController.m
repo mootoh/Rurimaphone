@@ -11,11 +11,13 @@
 #import "Database.h"
 
 @implementation RootViewController
+@synthesize classes;
 
 - (void)viewDidLoad
 {
    [super viewDidLoad];
    database = [[Database alloc] init];
+   self.classes = [database classes];
 }
 
 /*
@@ -69,14 +71,12 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // return 0;
-   return [database classCount];
+   return classes.count;
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -84,7 +84,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
    
-   NSDictionary *class = [[database classes] objectAtIndex:indexPath.row];
+   NSDictionary *class = [classes objectAtIndex:indexPath.row];
    cell.textLabel.text = [class objectForKey:@"name"];
    cell.detailTextLabel.text = [[class objectForKey:@"body"] substringToIndex:80];
 
@@ -93,9 +93,10 @@
 
 // Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+   [search_bar resignFirstResponder];
 
  	ClassViewController *anotherViewController = [[ClassViewController alloc] initWithStyle:UITableViewStyleGrouped];
-   NSDictionary *class = [[database classes] objectAtIndex:indexPath.row];
+   NSDictionary *class = [classes objectAtIndex:indexPath.row];
    anotherViewController.classInfo = class;
    anotherViewController.database = database;
 	[self.navigationController pushViewController:anotherViewController animated:YES];
@@ -144,6 +145,7 @@
 
 - (void)dealloc
 {
+   [classes release];
    [database release];
    [super dealloc];
 }
@@ -152,14 +154,8 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-   NSArray *result = [database query:searchText];
-   NSLog(@"results = %d", result.count);
-   /*
-   self.addresses = result;
-   
-   table_view.hidden = (addresses.count == 0);
-   [self.table_view reloadData];
-   */
+   self.classes = [database queryForClass:searchText];
+   [table_view reloadData];
 }
 
 @end
