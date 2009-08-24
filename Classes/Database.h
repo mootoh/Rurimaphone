@@ -20,5 +20,5 @@
 - (NSInteger) methodCount:(NSString *)forClass;
 - (NSArray *) methods:(NSString *)forClass;
 
-- (NSArray *) query:(NSString *)forString;
+- (NSArray *) queryForClass:(NSString *)forString;
 @end

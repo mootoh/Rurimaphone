@@ -149,7 +149,12 @@
    return ret;
 }
 
-- (NSArray *) query:(NSString *)forString
+- (NSArray *) queryForClass:(NSString *)forString
+{
+   return [NSArray array];
+}
+
+- (NSArray *) queryForMethod:(NSString *)forString
 {
    return [NSArray array];
 }
