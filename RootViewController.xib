@@ -44,6 +44,7 @@
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUIContentMode">3</int>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<string key="IBPlaceholder">class...</string>
 						<object class="IBUITextInputTraits" key="IBTextInputTraits"/>
 					</object>
 					<object class="IBUITableView" id="709618507">

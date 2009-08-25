@@ -16,6 +16,7 @@
    Database *database;
    NSArray *methods;
    IBOutlet UITableView *table_view;
+   IBOutlet UITextView *abstractTextView;
    
    NSMutableArray *searchResults;
    NSMutableDictionary *entry;

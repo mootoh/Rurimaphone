@@ -33,6 +33,23 @@
 		B9BCA6F11042A3CE00ABFC42 /* rurima.db in Resources */ = {isa = PBXBuildFile; fileRef = B9BCA6F01042A3CE00ABFC42 /* rurima.db */; };
 		B9BCA71D1042A58200ABFC42 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9BCA71C1042A58200ABFC42 /* libsqlite3.dylib */; };
 		B9BCA80B1042AE1900ABFC42 /* ClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9BCA80A1042AE1900ABFC42 /* ClassViewController.m */; };
+		B9F872091043F01F003E00A1 /* 06-magnifying-glass.png in Resources */ = {isa = PBXBuildFile; fileRef = 925192681043613300F8627C /* 06-magnifying-glass.png */; };
+		B9F8720A1043F020003E00A1 /* 08-chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 92519262104360FC00F8627C /* 08-chat.png */; };
+		B9F8720B1043F021003E00A1 /* 23-bird.png in Resources */ = {isa = PBXBuildFile; fileRef = 925192661043612700F8627C /* 23-bird.png */; };
+		B9F8720C1043F021003E00A1 /* 69-display.png in Resources */ = {isa = PBXBuildFile; fileRef = B9F871F21043EE79003E00A1 /* 69-display.png */; };
+		B9F8720D1043F022003E00A1 /* 96-book.png in Resources */ = {isa = PBXBuildFile; fileRef = B9F871F41043EEA4003E00A1 /* 96-book.png */; };
+		B9F8720E1043F022003E00A1 /* 98-palette.png in Resources */ = {isa = PBXBuildFile; fileRef = B9F871F31043EEA4003E00A1 /* 98-palette.png */; };
+		B9F8720F1043F024003E00A1 /* ClassView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BB0F6210430035008627CB /* ClassView.xib */; };
+		B9F872101043F025003E00A1 /* CodeSearchResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92342C66104314BC0087A2CD /* CodeSearchResultView.xib */; };
+		B9F872111043F026003E00A1 /* CodeSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92342C981043164D0087A2CD /* CodeSearchViewController.xib */; };
+		B9F872121043F027003E00A1 /* editSample.png in Resources */ = {isa = PBXBuildFile; fileRef = B9F871F51043EFB9003E00A1 /* editSample.png */; };
+		B9F872131043F027003E00A1 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
+		B9F872141043F028003E00A1 /* MethodView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BB0F9A10430284008627CB /* MethodView.xib */; };
+		B9F872151043F029003E00A1 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
+		B9F872161043F029003E00A1 /* rurima.db in Resources */ = {isa = PBXBuildFile; fileRef = B9BCA6F01042A3CE00ABFC42 /* rurima.db */; };
+		B9F872171043F02C003E00A1 /* RurimaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 92BB0F101042F204008627CB /* RurimaIcon.png */; };
+		B9F872191043F02E003E00A1 /* TabbedMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9F871F01043ED92003E00A1 /* TabbedMainWindow.xib */; };
+		B9F8721A1043F02F003E00A1 /* TweetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92519277104361E900F8627C /* TweetView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +90,13 @@
 		B9BCA71C1042A58200ABFC42 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B9BCA8091042AE1900ABFC42 /* ClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassViewController.h; sourceTree = "<group>"; };
 		B9BCA80A1042AE1900ABFC42 /* ClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassViewController.m; sourceTree = "<group>"; };
+		B9F871F01043ED92003E00A1 /* TabbedMainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabbedMainWindow.xib; sourceTree = "<group>"; };
+		B9F871F21043EE79003E00A1 /* 69-display.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "69-display.png"; path = "icons/icons/69-display.png"; sourceTree = "<group>"; };
+		B9F871F31043EEA4003E00A1 /* 98-palette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "98-palette.png"; path = "icons/icons/98-palette.png"; sourceTree = "<group>"; };
+		B9F871F41043EEA4003E00A1 /* 96-book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "96-book.png"; path = "icons/icons/96-book.png"; sourceTree = "<group>"; };
+		B9F871F51043EFB9003E00A1 /* editSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editSample.png; sourceTree = "<group>"; };
+		B9F872031043F013003E00A1 /* ConceptDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConceptDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9F872051043F013003E00A1 /* ConceptDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConceptDemo-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +108,13 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
 				B9BCA71D1042A58200ABFC42 /* libsqlite3.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9F872011043F013003E00A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* Rurimaphone.app */,
+				B9F872031043F013003E00A1 /* ConceptDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,6 +162,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				92BB0FED10430574008627CB /* Settings.bundle */,
+				B9F872051043F013003E00A1 /* ConceptDemo-Info.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -146,6 +179,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B9F871F51043EFB9003E00A1 /* editSample.png */,
+				B9F871F31043EEA4003E00A1 /* 98-palette.png */,
+				B9F871F41043EEA4003E00A1 /* 96-book.png */,
+				B9F871F21043EE79003E00A1 /* 69-display.png */,
 				925192681043613300F8627C /* 06-magnifying-glass.png */,
 				925192661043612700F8627C /* 23-bird.png */,
 				92519262104360FC00F8627C /* 08-chat.png */,
@@ -159,6 +196,7 @@
 				92342C66104314BC0087A2CD /* CodeSearchResultView.xib */,
 				92342C981043164D0087A2CD /* CodeSearchViewController.xib */,
 				92519277104361E900F8627C /* TweetView.xib */,
+				B9F871F01043ED92003E00A1 /* TabbedMainWindow.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -194,6 +232,23 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* Rurimaphone.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B9F872021043F013003E00A1 /* ConceptDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9F872081043F015003E00A1 /* Build configuration list for PBXNativeTarget "ConceptDemo" */;
+			buildPhases = (
+				B9F871FF1043F013003E00A1 /* Resources */,
+				B9F872001043F013003E00A1 /* Sources */,
+				B9F872011043F013003E00A1 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ConceptDemo;
+			productName = ConceptDemo;
+			productReference = B9F872031043F013003E00A1 /* ConceptDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -214,6 +269,7 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* Rurimaphone */,
+				B9F872021043F013003E00A1 /* ConceptDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -239,6 +295,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B9F871FF1043F013003E00A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9F872091043F01F003E00A1 /* 06-magnifying-glass.png in Resources */,
+				B9F8720A1043F020003E00A1 /* 08-chat.png in Resources */,
+				B9F8720B1043F021003E00A1 /* 23-bird.png in Resources */,
+				B9F8720C1043F021003E00A1 /* 69-display.png in Resources */,
+				B9F8720D1043F022003E00A1 /* 96-book.png in Resources */,
+				B9F8720E1043F022003E00A1 /* 98-palette.png in Resources */,
+				B9F8720F1043F024003E00A1 /* ClassView.xib in Resources */,
+				B9F872101043F025003E00A1 /* CodeSearchResultView.xib in Resources */,
+				B9F872111043F026003E00A1 /* CodeSearchViewController.xib in Resources */,
+				B9F872121043F027003E00A1 /* editSample.png in Resources */,
+				B9F872131043F027003E00A1 /* MainWindow.xib in Resources */,
+				B9F872141043F028003E00A1 /* MethodView.xib in Resources */,
+				B9F872151043F029003E00A1 /* RootViewController.xib in Resources */,
+				B9F872161043F029003E00A1 /* rurima.db in Resources */,
+				B9F872171043F02C003E00A1 /* RurimaIcon.png in Resources */,
+				B9F872191043F02E003E00A1 /* TabbedMainWindow.xib in Resources */,
+				B9F8721A1043F02F003E00A1 /* TweetView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -255,6 +335,13 @@
 				92342C3B104312B80087A2CD /* CodeSearchResultViewController.m in Sources */,
 				92342C991043164D0087A2CD /* CodeSearchViewController.m in Sources */,
 				9251927B104361F800F8627C /* TweetViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9F872001043F013003E00A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +371,55 @@
 				GCC_PREFIX_HEADER = Rurimaphone_Prefix.pch;
 				INFOPLIST_FILE = "Rurimaphone-Info.plist";
 				PRODUCT_NAME = Rurimaphone;
+			};
+			name = Release;
+		};
+		B9F872061043F015003E00A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "ConceptDemo-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = ConceptDemo;
+				SDKROOT = iphoneos3.1;
+			};
+			name = Debug;
+		};
+		B9F872071043F015003E00A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "ConceptDemo-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = ConceptDemo;
+				SDKROOT = iphoneos3.1;
+				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -321,6 +457,15 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9F872081043F015003E00A1 /* Build configuration list for PBXNativeTarget "ConceptDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9F872061043F015003E00A1 /* Debug */,
+				B9F872071043F015003E00A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

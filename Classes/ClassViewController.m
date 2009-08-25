@@ -31,6 +31,8 @@
    [super viewDidLoad];
    self.title = [classInfo objectForKey:@"name"];
    self.methods = [database methods:[classInfo objectForKey:@"name"]];
+   abstractTextView.text = [classInfo objectForKey:@"body"];
+   
    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -90,57 +92,38 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-   if (section == 0) {
-      return 1;
-   } else {
-      return methods.count;
-   }
+   return methods.count;
 }
 
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-   static NSString *CellIdentifierForAbstract = @"ClassViewCellAbstract";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
    static NSString *CellIdentifierForMethod = @"ClassViewCellMethod";
 
    UITableViewCell *cell = nil;
-   if (indexPath.section == 0) {
-      cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifierForAbstract];
-      if (cell == nil) {
-         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifierForAbstract] autorelease];
-      }
-   } else {
       cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifierForMethod];
       if (cell == nil) {
          cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifierForMethod] autorelease];
       }
-   }
     
-   if (indexPath.section == 0) {
-      cell.textLabel.font = [UIFont systemFontOfSize:12];
-      cell.textLabel.numberOfLines = 16;
-      cell.textLabel.text = [classInfo objectForKey:@"body"];
-   } else {
       cell.textLabel.text = [[methods objectAtIndex:indexPath.row] objectForKey:@"names"];
       NSString *body = [[methods objectAtIndex:indexPath.row] objectForKey:@"body"];
       
       if (body.length > 80) body = [body substringToIndex:80];
       cell.detailTextLabel.text = body;
-   }
 
    return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-   if (indexPath.section == 0) return;
 	MethodViewController *anotherViewController = [[MethodViewController alloc] initWithNibName:@"MethodView" bundle:nil];
    anotherViewController.classInfo = classInfo;
    anotherViewController.method = [methods objectAtIndex:indexPath.row];
@@ -151,16 +134,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   if (indexPath.section == 0) {
-      return 44.0f * 5.0f;
-   }
    return 44.0f;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-   if (section == 0)
-      return @"Abstract";
    return @"methods";
 }
 
