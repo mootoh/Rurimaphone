@@ -12,8 +12,10 @@
 {
    IBOutlet UITableView *table_view;
    NSArray *result;
+   NSString *queryFor;
 }
 
 @property (nonatomic, retain) NSArray *result;
+@property (nonatomic, retain) NSString *queryFor;
 
 @end

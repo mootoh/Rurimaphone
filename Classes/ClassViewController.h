@@ -24,6 +24,7 @@
    enum {
       IN_OTHER,
       IN_ID,
+      IN_TITLE,
       IN_CONTENT,
       IN_STATES
    } state;

@@ -173,7 +173,8 @@
 
 - (IBAction) searchSnippets
 {
-   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.google.com/codesearch/feeds/search?q=lang:ruby+%@", [classInfo objectForKey:@"name"]]]; // TODO: should escape it
+   NSString *queryFor = [classInfo objectForKey:@"name"];
+   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.google.com/codesearch/feeds/search?q=lang:ruby+%@", queryFor]]; // TODO: should escape it
    NSLog(@"search for url = %@", url);
    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
    parser.delegate = self;
@@ -181,6 +182,7 @@
    
    CodeSearchResultViewController *csrvc = [[CodeSearchResultViewController alloc] initWithNibName:@"CodeSearchResultView" bundle:nil];
    csrvc.result = searchResults;
+   csrvc.queryFor = queryFor;
    UINavigationController *navc = [[UINavigationController alloc] initWithRootViewController:csrvc];
 
    [self.navigationController presentModalViewController:navc animated:YES];
@@ -217,6 +219,10 @@
       state = IN_ID;
       return;
    }
+   if ([elementName isEqualToString:@"title"]) {
+      state = IN_TITLE;
+      return;
+   }
    if ([elementName isEqualToString:@"content"]) {
       state = IN_CONTENT;
       return;
@@ -237,6 +243,12 @@
       state = IN_OTHER;
       return;
    }
+   if ([elementName isEqualToString:@"title"]) {
+      [entry setObject:strings forKey:@"title"];
+      strings = @"";
+      state = IN_OTHER;
+      return;
+   }
    if ([elementName isEqualToString:@"content"]) {
       [entry setObject:strings forKey:@"content"];
       strings = @"";
@@ -249,6 +261,10 @@
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
    if (state == IN_ID) {
+      strings = [strings stringByAppendingString:string];
+      return;
+   }
+   if (state == IN_TITLE) {
       strings = [strings stringByAppendingString:string];
       return;
    }

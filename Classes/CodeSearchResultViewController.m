@@ -10,7 +10,7 @@
 #import "CodeSearchViewController.h"
 
 @implementation CodeSearchResultViewController
-@synthesize result;
+@synthesize result, queryFor;
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
  - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -31,6 +31,7 @@
  // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
    [super viewDidLoad];
+   self.title = queryFor;
 
    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
    self.navigationItem.leftBarButtonItem = cancelButton;
@@ -86,15 +87,16 @@
       cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
    }
    
-   cell.textLabel.text       = [[result objectAtIndex:indexPath.row] objectForKey:@"id"];
+   cell.textLabel.text = [[result objectAtIndex:indexPath.row] objectForKey:@"title"];
+   cell.textLabel.font = [UIFont systemFontOfSize:12];
    NSString *content = [[result objectAtIndex:indexPath.row] objectForKey:@"content"];
    
-   if (content.length > 80) content = [content substringToIndex:80];
+   if (content.length > 256) content = [content substringToIndex:256];
+   cell.detailTextLabel.numberOfLines = 4;
    cell.detailTextLabel.text = content;
    
    return cell;
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	CodeSearchViewController *anotherViewController = [[CodeSearchViewController alloc] initWithNibName:@"CodeSearchViewController" bundle:nil];
@@ -102,6 +104,12 @@
 	[self.navigationController pushViewController:anotherViewController animated:YES];
 	[anotherViewController release];
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   return 44.0f * 3.5;
+}
+
 
 - (IBAction) cancel
 {
