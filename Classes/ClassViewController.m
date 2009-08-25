@@ -9,6 +9,7 @@
 #import "ClassViewController.h"
 #import "MethodViewController.h"
 #import "CodeSearchResultViewController.h"
+#import "TweetViewController.h"
 #import "Database.h"
 
 @implementation ClassViewController
@@ -184,34 +185,18 @@
 
    [self.navigationController presentModalViewController:navc animated:YES];
    [navc release];
-   [csrvc release];
-   
+   [csrvc release];   
 }
 
 - (IBAction) tweet
 {
-   NSString *content = [NSString stringWithFormat:@"status=%@", [classInfo objectForKey:@"name"]];
+   TweetViewController *tvc = [[TweetViewController alloc] initWithNibName:@"TweetView" bundle:nil];
+   tvc.prefix = [classInfo objectForKey:@"name"];
+   UINavigationController *navc = [[UINavigationController alloc] initWithRootViewController:tvc];
    
-   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-   NSLog(@"twitter account:%@, password=%@", [defaults stringForKey:@"username_preference"], [defaults stringForKey:@"password_preference"]);
-   
-   NSString *urlString = [NSString stringWithFormat:@"http://%@:%@@twitter.com/statuses/update.json",
-      [defaults stringForKey:@"username_preference"],
-      [defaults stringForKey:@"password_preference"]];
-   
-   NSURL *url = [NSURL URLWithString:urlString];
-   NSMutableURLRequest *urlRequest = [[[NSMutableURLRequest alloc] initWithURL:url] autorelease];
-   [urlRequest setHTTPMethod:@"POST"];
-   [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-   
-   NSURLResponse *response;
-   NSError *err;
-   NSData *ret = [NSURLConnection sendSynchronousRequest:urlRequest
-                                       returningResponse:&response
-                                                   error:&err];
-   
-	NSString *result = [[[NSString alloc] initWithData:ret encoding:NSUTF8StringEncoding] autorelease];
-   NSLog(@"NSURLConnection result = %@", result);   
+   [self.navigationController presentModalViewController:navc animated:YES];
+   [navc release];
+   [tvc release];
 }
 
 #pragma mark XMLParser

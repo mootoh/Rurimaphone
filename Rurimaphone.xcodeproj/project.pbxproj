@@ -20,6 +20,11 @@
 		92342C67104314BC0087A2CD /* CodeSearchResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92342C66104314BC0087A2CD /* CodeSearchResultView.xib */; };
 		92342C991043164D0087A2CD /* CodeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92342C971043164D0087A2CD /* CodeSearchViewController.m */; };
 		92342C9A1043164D0087A2CD /* CodeSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92342C981043164D0087A2CD /* CodeSearchViewController.xib */; };
+		92519263104360FC00F8627C /* 08-chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 92519262104360FC00F8627C /* 08-chat.png */; };
+		925192671043612700F8627C /* 23-bird.png in Resources */ = {isa = PBXBuildFile; fileRef = 925192661043612700F8627C /* 23-bird.png */; };
+		925192691043613300F8627C /* 06-magnifying-glass.png in Resources */ = {isa = PBXBuildFile; fileRef = 925192681043613300F8627C /* 06-magnifying-glass.png */; };
+		92519278104361E900F8627C /* TweetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92519277104361E900F8627C /* TweetView.xib */; };
+		9251927B104361F800F8627C /* TweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9251927A104361F800F8627C /* TweetViewController.m */; };
 		92BB0F111042F204008627CB /* RurimaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 92BB0F101042F204008627CB /* RurimaIcon.png */; };
 		92BB0F6310430035008627CB /* ClassView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BB0F6210430035008627CB /* ClassView.xib */; };
 		92BB0F9B10430284008627CB /* MethodView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BB0F9A10430284008627CB /* MethodView.xib */; };
@@ -52,6 +57,12 @@
 		92342C961043164D0087A2CD /* CodeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeSearchViewController.h; sourceTree = "<group>"; };
 		92342C971043164D0087A2CD /* CodeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeSearchViewController.m; sourceTree = "<group>"; };
 		92342C981043164D0087A2CD /* CodeSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CodeSearchViewController.xib; path = Classes/CodeSearchViewController.xib; sourceTree = "<group>"; };
+		92519262104360FC00F8627C /* 08-chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "08-chat.png"; path = "icons/icons/08-chat.png"; sourceTree = "<group>"; };
+		925192661043612700F8627C /* 23-bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "23-bird.png"; path = "icons/icons/23-bird.png"; sourceTree = "<group>"; };
+		925192681043613300F8627C /* 06-magnifying-glass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "06-magnifying-glass.png"; path = "icons/icons/06-magnifying-glass.png"; sourceTree = "<group>"; };
+		92519277104361E900F8627C /* TweetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetView.xib; sourceTree = "<group>"; };
+		92519279104361F800F8627C /* TweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewController.h; sourceTree = "<group>"; };
+		9251927A104361F800F8627C /* TweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetViewController.m; sourceTree = "<group>"; };
 		92BB0F101042F204008627CB /* RurimaIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RurimaIcon.png; sourceTree = "<group>"; };
 		92BB0F6210430035008627CB /* ClassView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassView.xib; sourceTree = "<group>"; };
 		92BB0F9A10430284008627CB /* MethodView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MethodView.xib; sourceTree = "<group>"; };
@@ -96,6 +107,8 @@
 				92342C3A104312B80087A2CD /* CodeSearchResultViewController.m */,
 				92342C961043164D0087A2CD /* CodeSearchViewController.h */,
 				92342C971043164D0087A2CD /* CodeSearchViewController.m */,
+				92519279104361F800F8627C /* TweetViewController.h */,
+				9251927A104361F800F8627C /* TweetViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -133,6 +146,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				925192681043613300F8627C /* 06-magnifying-glass.png */,
+				925192661043612700F8627C /* 23-bird.png */,
+				92519262104360FC00F8627C /* 08-chat.png */,
 				92BB0F101042F204008627CB /* RurimaIcon.png */,
 				B9BCA6F01042A3CE00ABFC42 /* rurima.db */,
 				28F335F01007B36200424DE2 /* RootViewController.xib */,
@@ -142,6 +158,7 @@
 				92BB0F9A10430284008627CB /* MethodView.xib */,
 				92342C66104314BC0087A2CD /* CodeSearchResultView.xib */,
 				92342C981043164D0087A2CD /* CodeSearchViewController.xib */,
+				92519277104361E900F8627C /* TweetView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -215,6 +232,10 @@
 				92BB0FEE10430574008627CB /* Settings.bundle in Resources */,
 				92342C67104314BC0087A2CD /* CodeSearchResultView.xib in Resources */,
 				92342C9A1043164D0087A2CD /* CodeSearchViewController.xib in Resources */,
+				92519263104360FC00F8627C /* 08-chat.png in Resources */,
+				925192671043612700F8627C /* 23-bird.png in Resources */,
+				925192691043613300F8627C /* 06-magnifying-glass.png in Resources */,
+				92519278104361E900F8627C /* TweetView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +254,7 @@
 				922E0F241042CAF00066762C /* MethodViewController.m in Sources */,
 				92342C3B104312B80087A2CD /* CodeSearchResultViewController.m in Sources */,
 				92342C991043164D0087A2CD /* CodeSearchViewController.m in Sources */,
+				9251927B104361F800F8627C /* TweetViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
